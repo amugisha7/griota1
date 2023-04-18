@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 
 const Register = ({navigation}) => {
 
-  const { control, handleSubmit, formState: { errors }  } = useForm({
+  const { control, handleSubmit, watch  } = useForm({
     defaultValues: {
       phoneNumber: '',
       password: '',
@@ -19,6 +19,8 @@ const Register = ({navigation}) => {
 
   const PHONE_REGEX = /^0\d{9}/
 
+  const pwd = watch('password'); 
+
   const goToPrivacyPolicy =()=>{
     Alert.alert(
       'Privacy',
@@ -26,12 +28,12 @@ const Register = ({navigation}) => {
     )
   }
 
-  const goToTermsOfUse =()=>{}
-
-  // const Registering = () => {
-  //   //console.log(`Phone: ${phoneNumber}, Password: ${password} Confirmed: ${confirmPassword}`);
-  //   navigation.navigate('Home');
-  // }
+  const goToTermsOfUse =()=>{
+    Alert.alert(
+      'Terms of Use',
+      'Please visit our website www.griota.com to read our privacy policy'
+    )
+  }
 
   const SigningIn = () => {navigation.navigate('Sign In')}
   const Regme = (data) => {
@@ -50,7 +52,7 @@ const Register = ({navigation}) => {
             required: "This field is required", 
             pattern: {
               value: PHONE_REGEX,
-              message: 'Invalid Phone Number'
+              message: 'Invalid Phone Number (use format 0712345678)'
             },
           }}
           type={'tel'}
@@ -61,7 +63,13 @@ const Register = ({navigation}) => {
           placeholder={'Password'} 
           control={control}
           secureTextEntry={true}
-          rules={{required: "This field is required"}}
+          rules={{
+            required: "This field is required",
+            minLength: {
+              value: 8,
+              message: "Too short",
+            } 
+          }}
         />
 
         <CustomInput 
@@ -69,7 +77,10 @@ const Register = ({navigation}) => {
           placeholder={'Confirm Password'} 
           control={control}
           secureTextEntry={true}
-          rules={{required: "This field is required"}}
+          rules={{
+            required: "This field is required",
+            validate: value => pwd===value || 'Passwords do not match',
+          }}
         />
 
         <CustomButton onPress={handleSubmit(Regme)} buttonFunction={'Register'}/>

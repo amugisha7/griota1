@@ -2,13 +2,14 @@ import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
 export default function Tester({page, nextPage, prevPage}) {
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       firstName: '',
       lastName: ''
     }
   });
   const onSubmit = data => console.log(data);
+  
  
   return (
     <View>

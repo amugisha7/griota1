@@ -4,13 +4,20 @@ import Logo from '../../../assets/images/Griota_logo.png';
 
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
-
+import { useForm } from 'react-hook-form';
 
 const ConfirmPhoneNumber = ({navigation}) => {
 
-  const [code, setCode] = useState('');
+  const { control, handleSubmit, watch  } = useForm({
+    defaultValues: {
+      code: '',
+    }
+  });
   
-  const confirmingCode = () => {navigation.navigate('Home')}
+  const confirmingCode = (data) => {
+    console.log(data)
+    navigation.navigate('Home')
+  }
   const goToRegisterPage = () => {navigation.navigate('Register')}
   const Retry = () => {}
 
@@ -18,8 +25,13 @@ const ConfirmPhoneNumber = ({navigation}) => {
       <View style={styles.container }>
         <Image source={Logo} style={styles.logo}/>
         <Text style={styles.title}>Enter the code sent to your phone number</Text>
-        <CustomInput placeholder={'Code'} value={code} setValue={setCode}/>
-        <CustomButton onPress={confirmingCode} buttonFunction={'Confirm Phone Number'}/>
+        <CustomInput 
+          name='code'
+          placeholder={'Code'}
+          control={control}
+          rules={{}}
+        />
+        <CustomButton onPress={handleSubmit(confirmingCode)} buttonFunction={'Confirm Phone Number'}/>
 
         <View style={{marginTop: 20}}>
           <Text>Didn't Receive Message?</Text>

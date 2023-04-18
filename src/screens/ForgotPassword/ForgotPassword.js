@@ -4,22 +4,47 @@ import Logo from '../../../assets/images/Griota_logo.png';
 
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import { useForm } from 'react-hook-form';
 
 
 const ForgotPassword = ({navigation}) => {
 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const { control, handleSubmit, watch  } = useForm({
+    defaultValues: {
+      phoneNumber: ''
+    }
+  });
   
-  const CodeRequested = () => {}
+  const CodeRequested = (data) => {
+    console.log(data)
+    navigation.navigate('Confirm Phone Number')
+  }
 
   const Cancel = ()=>{navigation.navigate('Sign In')}
+
+  const PHONE_REGEX = /^0\d{9}/
 
   return (
       <View style={styles.container }>
         <Image source={Logo} style={styles.logo}/>
-        <Text style={styles.title}>Get a Code to reset your Password</Text>
-        <CustomInput placeholder={'Phone Number'} value={phoneNumber} setValue={setPhoneNumber}/>
-        <CustomButton onPress={CodeRequested} buttonFunction={'Submit'}/>
+        <Text style={styles.title}>Enter your Phone Number <br/>
+          <Text style={{fontSize: '14px', color: 'blue'}}>
+            A code to reset your password will be sent to you by SMS</Text>
+        </Text>
+        <CustomInput 
+          name='phoneNumber' 
+          placeholder='Phone Number (0711-111-111)' 
+          control={control}
+          rules={{
+            required: "This field is required", 
+            pattern: {
+              value: PHONE_REGEX,
+              message: 'Invalid Phone Number (use format 0712345678)'
+            },
+          }}
+          type={'tel'}
+        />
+        <CustomButton onPress={handleSubmit(CodeRequested)} buttonFunction={'Request Code'}/>
         
         <View style={{width: '50%'}}>
           <CustomButton onPress={Cancel} buttonFunction={'Cancel'} type='SECONDARY'/>
@@ -50,8 +75,13 @@ const styles = StyleSheet.create({
       height: 100
     },
     title: {
-        fontSize: '24px',
+        
+        fontSize: '20px',
         fontWeight: 600,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        marginVertical: '20px'   
     },
     link: {
       color: 'blue',
