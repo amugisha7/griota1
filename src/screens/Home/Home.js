@@ -1,10 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import CustomButton from '../../components/CustomButton/CustomButton'
 
-const Home = () => {
+const Home = ({navigation}) => {
+
+  const goToSignIn = ()=> navigation.navigate('Sign In')
+  const goToRegister = ()=> navigation.navigate('Register')
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome Home</Text>
+      <CustomButton onPress={goToSignIn} buttonFunction={'Go to Sign In'}/>
+      <CustomButton onPress={goToRegister} buttonFunction={'Go to Register'}/>
     </View>
   )
 }

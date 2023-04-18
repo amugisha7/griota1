@@ -6,6 +6,7 @@ import ForgotPassword from './src/screens/ForgotPassword/ForgotPassword';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/Home/Home';
+import Tester from './src/screens/Tester/Tester';
   
 
 const Stack = createNativeStackNavigator();
@@ -18,8 +19,11 @@ export default function App() {
           <Stack.Screen name='Sign In' component={SignInScreen} />
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Register' component={Register} />
-          <Stack.Screen name='Confirm Phone Number' component={ConfirmPhoneNumber} />
+          
+          {/*<Stack.Screen name='Confirm Phone Number' component={ConfirmPhoneNumber} />
           <Stack.Screen name='Forgot Password' component={ForgotPassword} />
+        */}
+         <Stack.Screen name='Tester' component={Tester} />
         
         
 
