@@ -5,25 +5,54 @@ import Logo from '../../../assets/images/Griota_logo.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useForm } from 'react-hook-form';
+import { Auth } from 'aws-amplify';
+import { useRoute } from '@react-navigation/native';
 
 const ConfirmPhoneNumber = ({navigation}) => {
 
+  const createdUserName = route?.params?.username;
+  const route = useRoute()
   const { control, handleSubmit, watch  } = useForm({
     defaultValues: {
+      username: createdUserName,
       code: '',
     }
   });
   
-  const confirmingCode = (data) => {
-    console.log(data)
-    navigation.navigate('Home')
+  const confirmingCode = async (data) => {
+    const {username, code} = data;
+    const accountCreatedMessage = 'Your Account was created Successfully. Please log in.'
+    try{
+      const verifCode = await Auth.confirmSignUp(username, code);
+      console.log(verifCode)
+      navigation.navigate('Sign In', {accountCreatedMessage, username})
+    }
+    catch(e){
+      console.log(e.message)
+    }
   }
   const goToRegisterPage = () => {navigation.navigate('Register')}
-  const Retry = () => {}
+  
+  const resendCode = async (createdUserName) => {
+    try{
+      await Auth.resendSignUp(createdUserName);
+    }
+    catch(e){
+      console.log(e.message)
+    }
+
+
+  }
 
   return (
       <View style={styles.container }>
         <Image source={Logo} style={styles.logo}/>
+        <View style={{}}>
+          <CustomInput
+            name='username'
+            control={control}
+          />
+        </View>
         <Text style={styles.title}>Enter the code sent to your phone number</Text>
         <CustomInput 
           name='code'
@@ -37,7 +66,7 @@ const ConfirmPhoneNumber = ({navigation}) => {
           <Text>Didn't Receive Message?</Text>
         </View>
         <View style={{width: '50%'}}>
-          <CustomButton onPress={Retry} buttonFunction={'Resend Code'} type='SECONDARY'/>
+          <CustomButton onPress={resendCode} buttonFunction={'Resend Code'} type='SECONDARY'/>
         </View>
 
         <View style={{width: '50%'}}>

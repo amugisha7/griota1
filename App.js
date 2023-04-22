@@ -5,10 +5,15 @@ import ForgotPassword from './src/screens/ForgotPassword/ForgotPassword';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/Home/Home';
+import { Amplify } from 'aws-amplify';
+import config from './src/aws-exports';
+import {withAuthenticator} from 'aws-amplify-react-native';  
+
+Amplify.configure(config)
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+const App= () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Sign In" screenOptions={{headerShown: false}}>
@@ -28,5 +33,6 @@ export default function App() {
     
   )  
 }
+export default App; 
 
 

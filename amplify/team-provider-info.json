@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-griotareactnative2-staging-53112-authRole",
+      "UnauthRoleArn": "arn:aws:iam::807453714028:role/amplify-griotareactnative2-staging-53112-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::807453714028:role/amplify-griotareactnative2-staging-53112-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-griotareactnative2-staging-53112-deployment",
+      "UnauthRoleName": "amplify-griotareactnative2-staging-53112-unauthRole",
+      "StackName": "amplify-griotareactnative2-staging-53112",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:807453714028:stack/amplify-griotareactnative2-staging-53112/e4e9b640-e0ce-11ed-8e85-02a848659f60",
+      "AmplifyAppId": "d3c9gll4xceh6x"
+    },
+    "categories": {
+      "auth": {
+        "GriotaReactNative2": {}
+      }
+    }
+  }
+}

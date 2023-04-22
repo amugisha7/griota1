@@ -4,12 +4,18 @@ import Logo from '../../../assets/images/Griota_logo.png'
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useForm } from 'react-hook-form';
+import {Auth} from 'aws-amplify'; 
+import { useRoute } from '@react-navigation/native';
 
 const SignInScreen = ({navigation}) => {
   
+  const route = useRoute()
+  var accountCreatedMessage = route?.params?.accountCreatedMessage; 
+  var createdUserName = route?.params?.username;
+
   const { control, handleSubmit} = useForm({
     defaultValues: {
-      phoneNumber: '',
+      username: createdUserName ? createdUserName : '',
       password: ''
     }
   });
@@ -18,11 +24,10 @@ const SignInScreen = ({navigation}) => {
 
   const ForgotPasswordPressed = () => {navigation.navigate('Forgot Password')}
 
-  const SigningIn = (data) => {
-    console.log(data);
+  const SigningIn = async (data) => {
+    const response = await Auth.signIn(data.username, data.password)
+    console.log(response);
     navigation.navigate('Home')
-    
-    // navigation.navigate('Home')
     
   }
 
@@ -32,18 +37,19 @@ const SignInScreen = ({navigation}) => {
       <View style={styles.container }>
         <Image source={Logo} style={styles.logo} resizeMode='contain'/>
         
+        {accountCreatedMessage ??  <Text>{accountCreatedMessage}</Text>}
         <CustomInput 
-          name='phoneNumber' 
+          name='username' 
           placeholder='Phone Number (0711-111-111)' 
           control={control}
-          rules={{
-            required: "This field is required", 
-            pattern: {
-              value: PHONE_REGEX,
-              message: 'Invalid Phone Number (use format 0712345678)'
-            },
-          }}
-          type={'tel'}
+          // rules={{
+          //   required: "This field is required", 
+          //   pattern: {
+          //     value: PHONE_REGEX,
+          //     message: 'Invalid Phone Number (use format 0712345678)'
+          //   },
+          // }}
+          // type={'tel'}
         />
         
         <CustomInput 

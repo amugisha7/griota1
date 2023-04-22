@@ -1,0 +1,9 @@
+type Borrower @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  typeOfBusiness: String
+  typeOfProduct: String
+  locationOfBusiness: String
+  picOfBusinessArea: String
+  picOfOwnerInBusiness: String
+  picOfOutsideOfBusiness: String
+}
