@@ -1,0 +1,14 @@
+{
+  "resourceName": "borrowermedia",
+  "policyUUID": "5d6a6f38",
+  "bucketName": "griotareactnative26b4165c563c34d5c850ba11da7a8a",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

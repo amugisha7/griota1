@@ -22,12 +22,14 @@ const SignInScreen = ({navigation}) => {
 
   const Registering = () => navigation.navigate('Register')
 
+  const goToTester = () => navigation.navigate("Tester")
+  
   const ForgotPasswordPressed = () => {navigation.navigate('Forgot Password')}
 
   const SigningIn = async (data) => {
     const response = await Auth.signIn(data.username, data.password)
     console.log(response);
-    navigation.navigate('Home')
+    navigation.navigate('FormScreen')
     
   }
 
@@ -37,6 +39,7 @@ const SignInScreen = ({navigation}) => {
       <View style={styles.container }>
         <Image source={Logo} style={styles.logo} resizeMode='contain'/>
         
+
         {accountCreatedMessage ??  <Text>{accountCreatedMessage}</Text>}
         <CustomInput 
           name='username' 
@@ -73,6 +76,7 @@ const SignInScreen = ({navigation}) => {
         </View>
         <View style={{width: '50%'}}>
           <CustomButton onPress={Registering} buttonFunction={'Register'} type='SECONDARY'/>
+          <CustomButton onPress={goToTester} buttonFunction={'Go to Tester'} type='SECONDARY'/>
         </View>
       </View>
     

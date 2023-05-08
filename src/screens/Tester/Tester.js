@@ -1,63 +1,38 @@
-import { Text, View, TextInput, Button, Alert } from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import { View, Text, Image } from 'react-native'
+import React, { useState } from 'react'
+import { launchImageLibrary } from 'react-native-image-picker'
+import { useEffect } from 'react'
 
-export default function Tester({page, nextPage, prevPage}) {
-  const { control, handleSubmit, watch } = useForm({
-    defaultValues: {
-      firstName: '',
-      lastName: ''
-    }
-  });
-  const onSubmit = data => console.log(data);
+
+const Tester = () => {
+  const [pic, setPic] = useState(null)
+  const [count, setCount] = useState(0)
   
- 
+  let rendr = false; 
+
+  async function setImage() {
+    const image = await launchImageLibrary({mediaType: 'photo'})
+    setPic(image.assets[0].uri)
+    console.log('image is ', image.assets[0].uri)
+  }
+  useEffect(()=>{
+  console.log('state is', pic)
+  console.log('count', count)
+  },[pic])
+
+  useEffect(()=>{
+    setCount(count+1) 
+    console.log('COUNT', count)
+  },[])
+
+
   return (
     <View>
-      <Text>The value of page is </Text>
-      {page === 0 && <View>
-        <Controller
-          control={control}
-          rules={{
-           required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              placeholder="First name"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-          name="firstName"
-        />
-        <Text onPress={nextPage}>0 Next Page</Text>
-        {errors.firstName && <Text>This is required.</Text>}
-      </View> 
-      }
-
-      {page ===1 &&
-      <View>
-        <Controller
-          control={control}
-          rules={{
-           maxLength: 100,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              placeholder="Last name"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-          name="lastName"
-        />
-        <Text onPress={nextPage}>0 Next Page</Text>
-        <Text onPress={prevPage}>0 Previous Page</Text>
-      </View>
-      }
-
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      <Text onPress={setImage}>Tester</Text>
+      {pic && <Text>Pic is now defined</Text>}
+      {count ===1 && <Image source={{uri: pic}} style={{width: '200px', height: '200px'}}/> }
     </View>
-  );
+  )
 }
+
+export default Tester

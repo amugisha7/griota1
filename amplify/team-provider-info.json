@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "GriotaReactNative2": {}
+      },
+      "api": {
+        "GriotaReactNative2": {}
+      },
+      "storage": {
+        "borrowermedia": {}
       }
     }
   }
