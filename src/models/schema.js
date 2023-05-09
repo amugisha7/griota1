@@ -10,22 +10,22 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "typeOfBusiness": {
-                    "name": "typeOfBusiness",
+                "businessType": {
+                    "name": "businessType",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "typeOfProduct": {
-                    "name": "typeOfProduct",
+                "businessActivity": {
+                    "name": "businessActivity",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "locationOfBusiness": {
-                    "name": "locationOfBusiness",
+                "businessLocation": {
+                    "name": "businessLocation",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -49,6 +49,20 @@ export const schema = {
                     "name": "picOfOutsideOfBusiness",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lastWeekSales": {
+                    "name": "lastWeekSales",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "preLastWeekSales": {
+                    "name": "preLastWeekSales",
+                    "isArray": false,
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -98,5 +112,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.0",
-    "version": "78daca51197fa1ea6eeab8077fc22538"
+    "version": "8c8f7f0fc3f3ef0641e539d3803205bc"
 };

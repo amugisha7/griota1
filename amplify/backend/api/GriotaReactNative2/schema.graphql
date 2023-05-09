@@ -1,9 +1,12 @@
 type Borrower @model @auth(rules: [{allow: public}]) {
   id: ID!
-  typeOfBusiness: String
-  typeOfProduct: String
-  locationOfBusiness: String
+  businessType: String
+  businessActivity: String
+  businessLocation: String
   picOfBusinessArea: String
   picOfOwnerInBusiness: String
   picOfOutsideOfBusiness: String
+  lastWeekSales: Float
+  preLastWeekSales: Float
 }
+ 

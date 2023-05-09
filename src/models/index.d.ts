@@ -12,12 +12,14 @@ type EagerBorrower = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly typeOfBusiness?: string | null;
-  readonly typeOfProduct?: string | null;
-  readonly locationOfBusiness?: string | null;
+  readonly businessType?: string | null;
+  readonly businessActivity?: string | null;
+  readonly businessLocation?: string | null;
   readonly picOfBusinessArea?: string | null;
   readonly picOfOwnerInBusiness?: string | null;
   readonly picOfOutsideOfBusiness?: string | null;
+  readonly lastWeekSales?: number | null;
+  readonly preLastWeekSales?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -28,12 +30,14 @@ type LazyBorrower = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly typeOfBusiness?: string | null;
-  readonly typeOfProduct?: string | null;
-  readonly locationOfBusiness?: string | null;
+  readonly businessType?: string | null;
+  readonly businessActivity?: string | null;
+  readonly businessLocation?: string | null;
   readonly picOfBusinessArea?: string | null;
   readonly picOfOwnerInBusiness?: string | null;
   readonly picOfOutsideOfBusiness?: string | null;
+  readonly lastWeekSales?: number | null;
+  readonly preLastWeekSales?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

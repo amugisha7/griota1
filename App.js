@@ -26,23 +26,22 @@ console.log('Screen width:', screenWidth);
 const App= () => {
   
   return (
-    <View style={{maxWidth: screenWidth}}>
-      <FormScreen />
-    </View>
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName="Sign In" screenOptions={{headerShown: false}}>
+    
+     <NavigationContainer>
+       <Stack.Navigator initialRouteName="Sign In" screenOptions={{headerShown: false}}>
         
-    //       <Stack.Screen name='Sign In' component={SignInScreen} />
-    //       <Stack.Screen name='Home' component={Home} />
-    //       <Stack.Screen name='Register' component={Register} />
-    //       <Stack.Screen name='Forgot Password' component={ForgotPassword} />
-    //       <Stack.Screen name='Confirm Phone Number' component={ConfirmPhoneNumber} />
-    //       <Stack.Screen name='Tester' component={Tester} />
-    //       <Stack.Screen name='FormScreen' component={FormScreen} />
+           <Stack.Screen name='Sign In' component={SignInScreen} />
+           <Stack.Screen name='Home' component={Home} />
+           <Stack.Screen name='Register' component={Register} />
+           <Stack.Screen name='Forgot Password' component={ForgotPassword} />
+           <Stack.Screen name='Confirm Phone Number' component={ConfirmPhoneNumber} />
+           <Stack.Screen name='Tester' component={Tester} />
+           <Stack.Screen name='FormScreen' component={FormScreen} />
          
 
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+       </Stack.Navigator>
+     </NavigationContainer>
+    
     
   )  
 }

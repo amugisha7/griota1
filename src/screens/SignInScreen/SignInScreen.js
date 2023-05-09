@@ -95,8 +95,6 @@ const styles = StyleSheet.create({
       width: '100%',
       paddingLeft: 20,
       paddingRight: 20,
-      width: '100%',
-      // maxWidth: '600px',
     },
     logo: {
         width: 100,

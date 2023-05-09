@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         marginVertical: 10,
-        // width: '100%'
+        width: '100%'
     },
     label: {
 

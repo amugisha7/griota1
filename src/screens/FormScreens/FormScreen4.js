@@ -5,13 +5,13 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import { useForm } from 'react-hook-form';
 import CustomButton from '../../components/CustomButton/CustomButton'
 import CustomDropDown from '../../components/CustomDropDown/CustomDropDown'
-import { durationInBsuiness } from '../../Lists/DurationInBusiness'
+import { ageRange } from '../../Lists/Age'
 
 import { griotaStyles } from '../../../assets/styles/style'
 
-const FormScreen3 = (
+const FormScreen4 = (
   {
-    receiveFormData3, setDurationInBusiness
+    receiveFormData4, setAge, setNationalIDFrontPicBlob
   }) => 
 {
     const { control, handleSubmit, watch  } = useForm({
@@ -23,19 +23,19 @@ const FormScreen3 = (
   return (
     <View style={styles.container}>
       <View style={griotaStyles.textContainer}>
-        <Text style={griotaStyles.title}>More Business Details</Text>
+        <Text style={griotaStyles.title}>Personal Details</Text>
       </View>  
       <View>
         <CustomDropDown 
-          items={durationInBsuiness} 
-          setSelectedItem={setDurationInBusiness} 
-          mylabel={'How long have you been in business?'}
+          items={ageRange} 
+          setSelectedItem={setAge} 
+          mylabel={'How old are you?'}
           required
         />
         
         <CustomInput 
-            name='salesLastWeek'
-            mylabel='How much Total Sales did you make last week? (UGX)'
+            name='fullName'
+            mylabel='Full Name as shown on National ID:'
             placeholder={''} 
             control={control}
             rules={{
@@ -44,22 +44,27 @@ const FormScreen3 = (
         />
         
         <CustomInput 
-            name='salesBeforeLastWeek'
-            mylabel='How much Total Sales did you make the week before last week?(UGX) '
+            name='nationalIDNumber'
+            mylabel='National ID Number:'
             placeholder={''} 
             control={control}
             rules={{
               required: "This field is required",
             }}
         />
+
+        <CustomImageUpload 
+            mylabel={'Upload Picture of Front of Your National ID: '} 
+            setBlobValue={setNationalIDFrontPicBlob}
+        />
         
       </View>
-      <CustomButton onPress={handleSubmit(receiveFormData3)} buttonFunction={'Next'}/>   
+      <CustomButton onPress={handleSubmit(receiveFormData4)} buttonFunction={'Next'}/>   
     </View>
   )
 }
 
-export default FormScreen3
+export default FormScreen4
 
 const styles = StyleSheet.create({
     
