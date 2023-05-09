@@ -21,7 +21,7 @@ const FormScreen = ({navigation}) => {
   
   const uploadS3 = async()=>{
     console.log('ready to upload')
-        // console.log(userPhoneNumber+'nationalID', nationalID)
+        // console.log(userPhoneNumber+'nationalID',nationalID)
         // console.log(userPhoneNumber+'nextOfKinNationalID', nextOfKinID)
         // await Storage.put(userPhoneNumber+'nationalIDtest', nationalID)
         // await Storage.put(userPhoneNumber+'nextOfKinNationalIDtest', nextOfKinID)
