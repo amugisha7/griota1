@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: '1px',
         backgroundColor: 'white',
-        minHeight: 80,
+        minHeight: 30,
         justifyContent: 'flex-start',
         
     }

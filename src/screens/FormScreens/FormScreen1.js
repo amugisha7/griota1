@@ -18,7 +18,7 @@ const FormScreen1 = (
   {
     navigation, userPhoneNumber, 
     setSelectedBusinessLocation, setSelectedBusinessType, 
-    setBlobValue, recieveFormData
+    recieveFormData1
   }) => 
 {
     const [count, setCount] = useState(0)
@@ -63,7 +63,7 @@ const FormScreen1 = (
               required: "This field is required",
             }}
         />
-                 
+
         <CustomDropDown 
           mylabel={'Where is your business located?'}
           items={businessLocations} 
@@ -71,12 +71,8 @@ const FormScreen1 = (
           required
         />
 
-        <CustomImageUpload 
-          mylabel={'Upload picture of your business area'} 
-          setBlobValue={setBlobValue}/>
-
       </View>
-      <CustomButton onPress={handleSubmit(recieveFormData)} buttonFunction={'Next'}/>   
+      <CustomButton onPress={handleSubmit(recieveFormData1)} buttonFunction={'Next'}/>   
     </View>
   )
 }

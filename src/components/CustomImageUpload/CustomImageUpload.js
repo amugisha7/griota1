@@ -10,7 +10,7 @@ const CustomImageUpload = ({ setBlobValue, mylabel}) => {
     async function setImage() {
       const image = await launchImageLibrary({mediaType: 'photo'})
       setPic(image.assets[0].uri)
-      console.log('image is ', image.assets[0].uri)
+      // console.log('image is ', image.assets[0].uri)
       const imageUri = image.assets[0].uri
       const response = await fetch(imageUri);
       const blob = await response.blob();
