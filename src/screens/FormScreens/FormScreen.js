@@ -6,6 +6,7 @@ import FormScreen1 from './FormScreen1';
 import FormScreen2 from './FormScreen2';
 import FormScreen3 from './FormScreen3'; 
 import FormScreen4 from './FormScreen4'; 
+import FormScreen5 from './FormScreen5'; 
 import { Auth } from 'aws-amplify';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
@@ -26,6 +27,9 @@ const FormScreen = ({navigation}) => {
   const[nationalIDFrontPicBlob, setNationalIDFrontPicBlob] = useState()
   const[fullName, setFullName] = useState()
   const[nationalIDNumber, setNationalIDNumber] = useState()
+  const[nextOfKinName, setNextOfKinName] = useState()
+  const[nextOfKinRelationship, setNextOfKinRelationship] = useState()
+  const[nextOfKinPhoneNumber, setNextOfKinPhoneNumber] = useState()
 
   
   useEffect(()=>{
@@ -81,6 +85,14 @@ const FormScreen = ({navigation}) => {
     setNationalIDNumber(nationalIDNumber);
     setFormPage(formPage + 1)
   }
+  
+  const receiveFormData5 = (data) =>{
+    const {nextOfKinName, nextOfKinRelationship, nextOfKinPhoneNumber} = data
+    setNextOfKinName(nextOfKinName);
+    setNextOfKinRelationship(nextOfKinRelationship);
+    setNextOfKinPhoneNumber(nextOfKinPhoneNumber);
+    setFormPage(formPage + 1)
+  }
 
   const showOnConsole=()=>{
     console.log('busienss Activity', businessActivity)
@@ -96,6 +108,9 @@ const FormScreen = ({navigation}) => {
     console.log('pic of Front of National ID', nationalIDFrontPicBlob)
     console.log('full name is: ', fullName)
     console.log('national ID number is', nationalIDNumber)
+    console.log('name of Next of Kin', nextOfKinName)
+    console.log('relationship of NOK', nextOfKinRelationship)
+    console.log('NOK phone number ', nextOfKinPhoneNumber)
     
 
   }
@@ -108,8 +123,6 @@ const FormScreen = ({navigation}) => {
           setSelectedBusinessLocation={setSelectedBusinessLocation}
           setSelectedBusinessType={setSelectedBusinessType}
           recieveFormData1={recieveFormData1}
-          
-          
         />
       </View>
       <View style={{display: formPage===2 ?'block':'none'}}>
@@ -126,7 +139,6 @@ const FormScreen = ({navigation}) => {
         <FormScreen3 
           setDurationInBusiness={setDurationInBsuiness}
           receiveFormData3={receiveFormData3}
-
         />
       </View>
 
@@ -135,12 +147,16 @@ const FormScreen = ({navigation}) => {
           setAge={setAge}
           receiveFormData4={receiveFormData4}
           setNationalIDFrontPicBlob={setNationalIDFrontPicBlob}
-
         />
       </View>
 
-
       <View style={{display: formPage===5 ?'block':'none'}}>
+        <FormScreen5 
+          receiveFormData5={receiveFormData5}
+        />
+      </View>
+
+      <View style={{display: formPage===6 ?'block':'none'}}>
       
         <CustomButton onPress={uploadS3} buttonFunction={'Submit to AWS'}/>
       </View>
